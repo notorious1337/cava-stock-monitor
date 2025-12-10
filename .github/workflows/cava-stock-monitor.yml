@@ -40,6 +40,21 @@ jobs:
       - name: Run CAVA stock monitor
         run: python cava_stock_monitor.py
 
+      - name: Commit updated state.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Try to add state.json (ignore if missing)
+          git add state.json 2>/dev/null || echo "state.json not present to add (first run or no file)."
+          # If there are staged changes, commit; otherwise print message
+          if ! git diff --cached --quiet; then
+            git commit -m "Update CAVA stock state [skip ci]" || echo "Nothing to commit"
+            git push || echo "Nothing to push"
+          else
+            echo "No changes in state.json to commit."
+          fi
+
+
     
 
 
