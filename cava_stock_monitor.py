@@ -374,7 +374,9 @@ def send_email(subject: str, html_body: str, text_body: str | None = None):
 
     msg = MIMEMultipart("alternative")
     msg["From"] = SMTP_USER
-    msg["To"] = TO_EMAIL
+    recipients = [e.strip() for e in TO_EMAIL.split(",") if e.strip()]
+    msg["To"] = ", ".join(recipients)
+
     msg["Subject"] = subject
 
     if text_body is None:
@@ -389,7 +391,8 @@ def send_email(subject: str, html_body: str, text_body: str | None = None):
     with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
         server.starttls()
         server.login(SMTP_USER, SMTP_PASSWORD)
-        server.send_message(msg)
+        server.sendmail(SMTP_USER, recipients, msg.as_string())
+
 
 
 # ====== MAIN ======
