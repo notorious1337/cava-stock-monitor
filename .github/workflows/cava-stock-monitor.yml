@@ -41,14 +41,12 @@ jobs:
         run: python cava_stock_monitor.py
 
       - name: Commit updated state.json
-        run: >
-          bash -c 'if git status --porcelain | grep -q "state.json"; then
-          git config user.name "github-actions[bot]";
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com";
-          git add state.json;
-          git commit -m "Update CAVA stock state [skip ci]" || echo "Nothing to commit";
-          git push;
-          else
-          echo "No changes in state.json to commit.";
-          fi'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json 2>/dev/null || echo "state.json not present to add (first run or no file)."
+          # Commit only if there are staged changes
+          git diff --cached --quiet && echo "No changes in state.json to commit." || git commit -m "Update CAVA stock state [skip ci]" || echo "Nothing to commit"
+          git push || echo "Nothing to push"
+
 
