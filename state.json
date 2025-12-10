@@ -3721,7 +3721,9 @@
         "S"
       ],
       "unavailable": [
-        "L"
+        "L",
+        "M",
+        "S"
       ]
     },
     "https://cavaathleisure.com/products/auburn-contoured-seamless-sports-bra": {
@@ -3740,12 +3742,12 @@
     "https://cavaathleisure.com/products/raven-black-seamless-cinched-leggings": {
       "status": "partial",
       "available": [
-        "L",
         "M",
         "S",
         "XS"
       ],
       "unavailable": [
+        "L",
         "XL",
         "XXL"
       ]
