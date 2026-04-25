@@ -3,13 +3,13 @@
     "https://cavaathleisure.com/products/cherry-ripple-swim-skorts": {
       "status": "partial",
       "available": [
-        "L",
         "M",
         "S",
         "XL",
         "XS"
       ],
       "unavailable": [
+        "L",
         "XXL"
       ]
     },
@@ -19,10 +19,10 @@
         "L",
         "M",
         "S",
-        "XL",
         "XS"
       ],
       "unavailable": [
+        "XL",
         "XXL"
       ]
     },
@@ -32,11 +32,24 @@
         "L",
         "M",
         "S",
-        "XS",
-        "XXL"
+        "XS"
       ],
       "unavailable": [
-        "XL"
+        "XL",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/cherry-tieback-swim-top": {
+      "status": "partial",
+      "available": [
+        "L",
+        "S"
+      ],
+      "unavailable": [
+        "M",
+        "XL",
+        "XS",
+        "XXL"
       ]
     },
     "https://cavaathleisure.com/products/black-tieback-swim-top": {
@@ -55,13 +68,13 @@
     "https://cavaathleisure.com/products/cherry-studio-compression-sports-bra": {
       "status": "partial",
       "available": [
+        "L",
+        "S",
+        "XL",
         "XS"
       ],
       "unavailable": [
-        "L",
         "M",
-        "S",
-        "XL",
         "XXL"
       ]
     },
@@ -89,6 +102,18 @@
         "34"
       ]
     },
+    "https://cavaathleisure.com/products/teal-5-pacer-shorts": {
+      "status": "partial",
+      "available": [
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "unavailable": [
+        "30"
+      ]
+    },
     "https://cavaathleisure.com/products/blush-pink-overlap-tank": {
       "status": "partial",
       "available": [
@@ -105,11 +130,11 @@
     "https://cavaathleisure.com/products/pink-strap-back-sports-bra": {
       "status": "partial",
       "available": [
+        "L",
         "XL",
         "XXL"
       ],
       "unavailable": [
-        "L",
         "M",
         "S",
         "XS"
@@ -118,52 +143,52 @@
     "https://cavaathleisure.com/products/slate-contour-flared-leggings": {
       "status": "partial",
       "available": [
+        "L",
         "M",
+        "S",
         "XL",
         "XS"
       ],
       "unavailable": [
-        "L",
-        "S",
         "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/plum-contoured-seamless-sports-bra": {
-      "status": "partial",
-      "available": [
-        "M",
-        "S",
-        "XL",
-        "XXL"
-      ],
-      "unavailable": [
-        "L",
-        "XS"
       ]
     },
     "https://cavaathleisure.com/products/navy-contoured-seamless-sports-bra": {
       "status": "partial",
       "available": [
-        "L",
         "M",
         "S",
         "XL",
         "XXL"
       ],
       "unavailable": [
+        "L",
+        "XS"
+      ]
+    },
+    "https://cavaathleisure.com/products/cherry-contour-flared-leggings": {
+      "status": "partial",
+      "available": [
+        "XXL"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
         "XS"
       ]
     },
     "https://cavaathleisure.com/products/black-studio-compression-leggings": {
       "status": "partial",
       "available": [
-        "L",
         "M",
         "S",
         "XL",
         "XS"
       ],
       "unavailable": [
+        "L",
         "XXL"
       ]
     },
@@ -183,10 +208,10 @@
     "https://cavaathleisure.com/products/black-hourglass-swirl-skorts": {
       "status": "partial",
       "available": [
+        "L",
         "S"
       ],
       "unavailable": [
-        "L",
         "M",
         "XL",
         "XS",
@@ -206,16 +231,29 @@
         "XL"
       ]
     },
-    "https://cavaathleisure.com/products/wine-heartline-sports-bra": {
+    "https://cavaathleisure.com/products/blush-heartline-sports-bra": {
       "status": "partial",
       "available": [
-        "XL"
-      ],
-      "unavailable": [
         "L",
         "M",
         "S",
-        "XS",
+        "XL",
+        "XXL"
+      ],
+      "unavailable": [
+        "XS"
+      ]
+    },
+    "https://cavaathleisure.com/products/wine-heartline-sports-bra": {
+      "status": "partial",
+      "available": [
+        "M",
+        "XS"
+      ],
+      "unavailable": [
+        "L",
+        "S",
+        "XL",
         "XXL"
       ]
     },
@@ -224,37 +262,37 @@
       "available": [
         "L",
         "S",
+        "XL",
         "XS"
       ],
       "unavailable": [
         "M",
-        "XL",
         "XXL"
       ]
     },
     "https://cavaathleisure.com/products/burgundy-5-train-in-shorts": {
       "status": "partial",
       "available": [
-        "36",
         "38"
       ],
       "unavailable": [
         "30",
         "32",
-        "34"
+        "34",
+        "36"
       ]
     },
     "https://cavaathleisure.com/products/pink-hourglass-booty-shorts": {
       "status": "partial",
       "available": [
         "L",
+        "M",
         "S",
         "XL",
-        "XS",
         "XXL"
       ],
       "unavailable": [
-        "M"
+        "XS"
       ]
     },
     "https://cavaathleisure.com/products/plum-seamless-cinched-leggings": {
@@ -267,19 +305,6 @@
       ],
       "unavailable": [
         "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/ivory-ultra-support-sports-bra": {
-      "status": "partial",
-      "available": [
-        "S",
-        "XS"
-      ],
-      "unavailable": [
-        "L",
-        "M",
-        "XL",
         "XXL"
       ]
     },
@@ -296,17 +321,17 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/wine-hourglass-snug-leggings": {
+    "https://cavaathleisure.com/products/cherry-hourglass-swirl-skorts": {
       "status": "partial",
       "available": [
-        "M",
-        "S",
-        "XS",
-        "XXL"
+        "S"
       ],
       "unavailable": [
         "L",
-        "XL"
+        "M",
+        "XL",
+        "XS",
+        "XXL"
       ]
     },
     "https://cavaathleisure.com/products/dynamic-overlap-tanks-pack-of-2": {
@@ -411,13 +436,13 @@
     "https://cavaathleisure.com/products/green-wide-leg-joggers": {
       "status": "partial",
       "available": [
+        "S",
         "XL",
         "XXL"
       ],
       "unavailable": [
         "L",
-        "M",
-        "S"
+        "M"
       ]
     },
     "https://cavaathleisure.com/products/dusty-pink-wide-leg-joggers": {
@@ -432,7 +457,7 @@
         "XL"
       ]
     },
-    "https://cavaathleisure.com/products/brown-cotton-leisure-shorts": {
+    "https://cavaathleisure.com/products/blue-cotton-leisure-shorts": {
       "status": "partial",
       "available": [
         "L",
@@ -495,12 +520,12 @@
     "https://cavaathleisure.com/products/yellow-cotton-baby-tee": {
       "status": "partial",
       "available": [
-        "M",
         "XL",
         "XXL"
       ],
       "unavailable": [
         "L",
+        "M",
         "S",
         "XS"
       ]
@@ -508,26 +533,26 @@
     "https://cavaathleisure.com/products/grey-cotton-baby-tee": {
       "status": "partial",
       "available": [
+        "L",
+        "M",
         "S",
         "XL",
         "XXL"
       ],
       "unavailable": [
-        "L",
-        "M",
         "XS"
       ]
     },
     "https://cavaathleisure.com/products/pink-cotton-baby-tee": {
       "status": "partial",
       "available": [
+        "L",
+        "M",
         "S",
         "XL",
         "XXL"
       ],
       "unavailable": [
-        "L",
-        "M",
         "XS"
       ]
     },
@@ -557,15 +582,28 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/pink-racerback-tank": {
+      "status": "partial",
+      "available": [
+        "S"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/ruby-hourglass-snug-legging": {
       "status": "partial",
       "available": [
+        "L",
         "XL",
         "XS",
         "XXL"
       ],
       "unavailable": [
-        "L",
         "M",
         "S"
       ]
@@ -645,6 +683,32 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/ice-blue-sculpt-core-top": {
+      "status": "partial",
+      "available": [
+        "XS"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/storm-blue-sculpt-core-top": {
+      "status": "partial",
+      "available": [
+        "L"
+      ],
+      "unavailable": [
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/storm-blue-sculpt-v-neck-top": {
       "status": "partial",
       "available": [
@@ -671,6 +735,19 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/black-sculpt-crew-top": {
+      "status": "partial",
+      "available": [
+        "XS"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/burgundy-sculpt-crew-top": {
       "status": "partial",
       "available": [
@@ -687,38 +764,51 @@
     "https://cavaathleisure.com/products/ice-blue-sculpt-crew-top": {
       "status": "partial",
       "available": [
+        "S",
         "XS",
         "XXL"
       ],
       "unavailable": [
         "L",
         "M",
-        "S",
         "XL"
       ]
     },
     "https://cavaathleisure.com/products/white-sculpt-crew-top": {
       "status": "partial",
       "available": [
-        "XL",
+        "XL"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/storm-blue-sculpt-crew-top": {
+      "status": "partial",
+      "available": [
         "XS"
       ],
       "unavailable": [
         "L",
         "M",
         "S",
+        "XL",
         "XXL"
       ]
     },
     "https://cavaathleisure.com/products/black-sculpt-scoop-top": {
       "status": "partial",
       "available": [
+        "L",
         "M",
         "S",
         "XS"
       ],
       "unavailable": [
-        "L",
         "XL",
         "XXL"
       ]
@@ -792,12 +882,12 @@
       "status": "partial",
       "available": [
         "L",
+        "M",
         "S",
         "XL",
         "XXL"
       ],
       "unavailable": [
-        "M",
         "XS"
       ]
     },
@@ -832,7 +922,6 @@
       "unavailable": [
         "L",
         "M",
-        "S",
         "XL",
         "XS",
         "XXL"
@@ -863,6 +952,8 @@
       ],
       "unavailable": [
         "L",
+        "M",
+        "XS",
         "XXL"
       ]
     },
@@ -875,6 +966,19 @@
       ],
       "unavailable": [
         "L",
+        "XL",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/burgundy-sculpt-v-neck-top": {
+      "status": "partial",
+      "available": [
+        "L",
+        "XS"
+      ],
+      "unavailable": [
+        "M",
+        "S",
         "XL",
         "XXL"
       ]
@@ -895,12 +999,12 @@
     "https://cavaathleisure.com/products/navy-sculpt-scoop-top": {
       "status": "partial",
       "available": [
+        "M",
         "S",
         "XS"
       ],
       "unavailable": [
         "L",
-        "M",
         "XL",
         "XXL"
       ]
@@ -918,14 +1022,40 @@
         "L"
       ]
     },
+    "https://cavaathleisure.com/products/brown-sculpt-scoop-top": {
+      "status": "partial",
+      "available": [
+        "L",
+        "M"
+      ],
+      "unavailable": [
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/ice-blue-sculpt-booty-shorts": {
+      "status": "partial",
+      "available": [
+        "S"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/hot-pink-sculpt-booty-shorts": {
       "status": "partial",
       "available": [
+        "L",
         "XS",
         "XXL"
       ],
       "unavailable": [
-        "L",
         "M",
         "S",
         "XL"
@@ -1256,6 +1386,32 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/navy-cotton-twirl-skort": {
+      "status": "partial",
+      "available": [
+        "S"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/yellow-cotton-scoop-tank": {
+      "status": "partial",
+      "available": [
+        "L"
+      ],
+      "unavailable": [
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/grey-cotton-scoop-tank": {
       "status": "partial",
       "available": [
@@ -1272,11 +1428,11 @@
     "https://cavaathleisure.com/products/pink-cotton-scoop-tank": {
       "status": "partial",
       "available": [
-        "L",
         "XL",
         "XXL"
       ],
       "unavailable": [
+        "L",
         "M",
         "S",
         "XS"
@@ -1312,13 +1468,13 @@
       "status": "partial",
       "available": [
         "M",
+        "S",
+        "XS",
         "XXL"
       ],
       "unavailable": [
         "L",
-        "S",
-        "XL",
-        "XS"
+        "XL"
       ]
     },
     "https://cavaathleisure.com/products/navy-sculpt-built-in-top": {
@@ -1327,10 +1483,10 @@
         "L",
         "M",
         "S",
+        "XL",
         "XXL"
       ],
       "unavailable": [
-        "XL",
         "XS"
       ]
     },
@@ -1451,6 +1607,19 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/mint-gingham-sculpt-core-leggings": {
+      "status": "partial",
+      "available": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS"
+      ],
+      "unavailable": [
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/butter-yellow-gingham-sculpt-core-leggings": {
       "status": "partial",
       "available": [
@@ -1490,17 +1659,30 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/hot-pink-swirl-tennis-skorts": {
+    "https://cavaathleisure.com/products/blush-pink-swirl-tennis-skorts": {
       "status": "partial",
       "available": [
         "L",
         "M",
+        "S",
+        "XS",
+        "XXL"
+      ],
+      "unavailable": [
+        "XL"
+      ]
+    },
+    "https://cavaathleisure.com/products/hot-pink-swirl-tennis-skorts": {
+      "status": "partial",
+      "available": [
+        "M",
+        "S",
         "XL",
         "XS",
         "XXL"
       ],
       "unavailable": [
-        "S"
+        "L"
       ]
     },
     "https://cavaathleisure.com/products/brunette-super-stretch-bralette": {
@@ -1656,8 +1838,6 @@
       ],
       "unavailable": [
         "L",
-        "M",
-        "S",
         "XXL"
       ]
     },
@@ -1745,11 +1925,11 @@
       "available": [
         "M",
         "S",
+        "XL",
         "XS"
       ],
       "unavailable": [
         "L",
-        "XL",
         "XXL"
       ]
     },
@@ -2056,10 +2236,10 @@
     "https://cavaathleisure.com/products/pine-cava-essential-sweatshirt": {
       "status": "partial",
       "available": [
+        "L",
         "S"
       ],
       "unavailable": [
-        "L",
         "M",
         "XL",
         "XS",
@@ -2104,15 +2284,15 @@
         "XS"
       ]
     },
-    "https://cavaathleisure.com/products/cobalt-racerback-tank": {
+    "https://cavaathleisure.com/products/cobalt-ex-tall-hourglass-flared-leggings": {
       "status": "partial",
       "available": [
-        "L"
+        "M",
+        "XL"
       ],
       "unavailable": [
-        "M",
+        "L",
         "S",
-        "XL",
         "XS",
         "XXL"
       ]
@@ -2120,13 +2300,13 @@
     "https://cavaathleisure.com/products/cobalt-overlap-tee": {
       "status": "partial",
       "available": [
+        "S",
         "XL",
         "XS"
       ],
       "unavailable": [
         "L",
         "M",
-        "S",
         "XXL"
       ]
     },
@@ -2422,12 +2602,12 @@
     "https://cavaathleisure.com/products/cobalt-tall-hourglass-flared-leggings": {
       "status": "partial",
       "available": [
+        "S",
         "XS"
       ],
       "unavailable": [
         "L",
         "M",
-        "S",
         "XL",
         "XXL"
       ]
@@ -2435,14 +2615,27 @@
     "https://cavaathleisure.com/products/wine-petite-hourglass-flared-leggings": {
       "status": "partial",
       "available": [
+        "M",
+        "S",
         "XL",
         "XS"
       ],
       "unavailable": [
         "L",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/brown-hourglass-snug-leggings": {
+      "status": "partial",
+      "available": [
         "M",
         "S",
+        "XL",
+        "XS",
         "XXL"
+      ],
+      "unavailable": [
+        "L"
       ]
     },
     "https://cavaathleisure.com/products/black-hourglass-snug-leggings": {
@@ -2471,14 +2664,27 @@
         "XS"
       ]
     },
-    "https://cavaathleisure.com/products/black-sprint-shorts-lined": {
+    "https://cavaathleisure.com/products/black-hourglass-booty-shorts": {
       "status": "partial",
       "available": [
         "L",
         "S",
+        "XL",
+        "XXL"
+      ],
+      "unavailable": [
+        "M",
+        "XS"
+      ]
+    },
+    "https://cavaathleisure.com/products/black-sprint-shorts-lined": {
+      "status": "partial",
+      "available": [
+        "S",
         "XL"
       ],
       "unavailable": [
+        "L",
         "M",
         "XS",
         "XXL"
@@ -2552,13 +2758,13 @@
     "https://cavaathleisure.com/products/cedar-aerial-leggings": {
       "status": "partial",
       "available": [
+        "M",
         "S",
         "XL",
         "XS"
       ],
       "unavailable": [
         "L",
-        "M",
         "XXL"
       ]
     },
@@ -2604,10 +2810,10 @@
       "available": [
         "L",
         "M",
-        "S",
         "XXL"
       ],
       "unavailable": [
+        "S",
         "XL"
       ]
     },
@@ -2686,11 +2892,11 @@
     "https://cavaathleisure.com/products/teal-ace-bond-polo": {
       "status": "partial",
       "available": [
+        "L",
         "S",
         "XXL"
       ],
       "unavailable": [
-        "L",
         "M",
         "XL"
       ]
@@ -2750,12 +2956,12 @@
     "https://cavaathleisure.com/products/ruby-impact-sport-bra": {
       "status": "partial",
       "available": [
+        "S",
         "XS"
       ],
       "unavailable": [
         "L",
         "M",
-        "S",
         "XL",
         "XXL"
       ]
@@ -2776,14 +2982,27 @@
     "https://cavaathleisure.com/products/black-all-square-sports-bra": {
       "status": "partial",
       "available": [
+        "L",
         "S",
         "XS",
         "XXL"
       ],
       "unavailable": [
-        "L",
         "M",
         "XL"
+      ]
+    },
+    "https://cavaathleisure.com/products/lilac-sculpt-built-in-top": {
+      "status": "partial",
+      "available": [
+        "S"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "XL",
+        "XS",
+        "XXL"
       ]
     },
     "https://cavaathleisure.com/products/ruby-courtside-dress": {
@@ -2863,6 +3082,30 @@
         "XL"
       ]
     },
+    "https://cavaathleisure.com/products/off-white-urban-zipper-polo": {
+      "status": "partial",
+      "available": [
+        "L"
+      ],
+      "unavailable": [
+        "M",
+        "S",
+        "XL",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/black-everywear-pants": {
+      "status": "partial",
+      "available": [
+        "L",
+        "M",
+        "XL",
+        "XXL"
+      ],
+      "unavailable": [
+        "S"
+      ]
+    },
     "https://cavaathleisure.com/products/light-beige-everywear-pants": {
       "status": "partial",
       "available": [
@@ -2926,12 +3169,12 @@
     "https://cavaathleisure.com/products/jade-supima-crew-neck-t-shirt": {
       "status": "partial",
       "available": [
-        "S",
         "XL"
       ],
       "unavailable": [
         "L",
         "M",
+        "S",
         "XXL"
       ]
     },
@@ -2978,23 +3221,23 @@
       "status": "partial",
       "available": [
         "L",
+        "M",
         "S",
+        "XL",
         "XS"
       ],
       "unavailable": [
-        "M",
-        "XL",
         "XXL"
       ]
     },
     "https://cavaathleisure.com/products/lilac-training-tee": {
       "status": "partial",
       "available": [
+        "L",
+        "M",
         "XS"
       ],
       "unavailable": [
-        "L",
-        "M",
         "S",
         "XL",
         "XXL"
@@ -3118,25 +3361,25 @@
     "https://cavaathleisure.com/products/olive-blue-lay-low-top": {
       "status": "partial",
       "available": [
-        "M",
         "XL",
         "XXL"
       ],
       "unavailable": [
         "L",
+        "M",
         "XS/S"
       ]
     },
     "https://cavaathleisure.com/products/navy-blue-lay-low-top": {
       "status": "partial",
       "available": [
-        "L",
         "XL",
-        "XS/S",
         "XXL"
       ],
       "unavailable": [
-        "M"
+        "L",
+        "M",
+        "XS/S"
       ]
     },
     "https://cavaathleisure.com/products/mint-move-easy-leggings": {
@@ -3223,12 +3466,25 @@
       "status": "partial",
       "available": [
         "S",
-        "XS"
+        "XS",
+        "XXL"
+      ],
+      "unavailable": [
+        "L",
+        "M",
+        "XL"
+      ]
+    },
+    "https://cavaathleisure.com/products/green-zenfeel-shorts": {
+      "status": "partial",
+      "available": [
+        "S"
       ],
       "unavailable": [
         "L",
         "M",
         "XL",
+        "XS",
         "XXL"
       ]
     },
@@ -3261,25 +3517,13 @@
     "https://cavaathleisure.com/products/fuchsia-elevate-24-7-seamless-leggings": {
       "status": "partial",
       "available": [
-        "M",
         "XL",
         "XS/S"
       ],
       "unavailable": [
         "L",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/cyan-elevate-24-7-seamless-leggings": {
-      "status": "partial",
-      "available": [
-        "XXL"
-      ],
-      "unavailable": [
-        "L",
         "M",
-        "XL",
-        "XS/S"
+        "XXL"
       ]
     },
     "https://cavaathleisure.com/products/green-dual-shade-adapt-hoodie": {
@@ -3717,11 +3961,11 @@
       "status": "partial",
       "available": [
         "L",
+        "M",
         "XL",
         "XXL"
       ],
       "unavailable": [
-        "M",
         "S",
         "XS"
       ]
@@ -3907,12 +4151,12 @@
     "https://cavaathleisure.com/products/sage-pulse-biker-shorts": {
       "status": "partial",
       "available": [
+        "M",
         "S",
         "XL"
       ],
       "unavailable": [
         "L",
-        "M",
         "XS",
         "XXL"
       ]
@@ -3959,10 +4203,10 @@
     "https://cavaathleisure.com/products/mauve-all-in-bootcut-leggings": {
       "status": "partial",
       "available": [
-        "L"
+        "L",
+        "M"
       ],
       "unavailable": [
-        "M",
         "S",
         "XL",
         "XS",
@@ -4460,17 +4704,6 @@
       ],
       "unavailable": []
     },
-    "https://cavaathleisure.com/products/teal-5-pacer-shorts": {
-      "status": "full_in_stock",
-      "available": [
-        "30",
-        "32",
-        "34",
-        "36",
-        "38"
-      ],
-      "unavailable": []
-    },
     "https://cavaathleisure.com/products/purple-fluid-ozone-sleeveless-tank": {
       "status": "full_in_stock",
       "available": [
@@ -4494,6 +4727,18 @@
       "unavailable": []
     },
     "https://cavaathleisure.com/products/teal-fluid-strap-back-sports-bra": {
+      "status": "full_in_stock",
+      "available": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ],
+      "unavailable": []
+    },
+    "https://cavaathleisure.com/products/plum-contoured-seamless-sports-bra": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -4530,18 +4775,6 @@
       "unavailable": []
     },
     "https://cavaathleisure.com/products/blush-hourglass-swirl-skorts": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
-    "https://cavaathleisure.com/products/blush-heartline-sports-bra": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -4624,6 +4857,18 @@
       "unavailable": []
     },
     "https://cavaathleisure.com/products/steel-blue-hourglass-snug-leggings": {
+      "status": "full_in_stock",
+      "available": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ],
+      "unavailable": []
+    },
+    "https://cavaathleisure.com/products/wine-hourglass-snug-leggings": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -4746,7 +4991,7 @@
       ],
       "unavailable": []
     },
-    "https://cavaathleisure.com/products/blue-cotton-leisure-shorts": {
+    "https://cavaathleisure.com/products/green-cotton-leisure-shorts": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -4757,7 +5002,7 @@
       ],
       "unavailable": []
     },
-    "https://cavaathleisure.com/products/green-cotton-leisure-shorts": {
+    "https://cavaathleisure.com/products/brown-cotton-leisure-shorts": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -5015,30 +5260,6 @@
       "unavailable": []
     },
     "https://cavaathleisure.com/products/pink-bow-sculpt-core-leggings": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
-    "https://cavaathleisure.com/products/mint-gingham-sculpt-core-leggings": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
-    "https://cavaathleisure.com/products/blush-pink-swirl-tennis-skorts": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -5320,30 +5541,6 @@
       "unavailable": []
     },
     "https://cavaathleisure.com/products/wine-tall-hourglass-flared-leggings": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
-    "https://cavaathleisure.com/products/brown-hourglass-snug-leggings": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
-    "https://cavaathleisure.com/products/black-hourglass-booty-shorts": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -5670,17 +5867,6 @@
       "unavailable": []
     },
     "https://cavaathleisure.com/products/green-urban-zipper-polo": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XXL"
-      ],
-      "unavailable": []
-    },
-    "https://cavaathleisure.com/products/black-everywear-pants": {
       "status": "full_in_stock",
       "available": [
         "L",
@@ -6208,31 +6394,7 @@
       ],
       "unavailable": []
     },
-    "https://cavaathleisure.com/products/cherry-tieback-swim-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/black-contour-flared-leggings": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/cherry-contour-flared-leggings": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -6256,7 +6418,7 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/cherry-hourglass-swirl-skorts": {
+    "https://cavaathleisure.com/products/ivory-ultra-support-sports-bra": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -6392,18 +6554,6 @@
         "XL"
       ]
     },
-    "https://cavaathleisure.com/products/pink-racerback-tank": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/aruba-pink-patchwork-jacket-1": {
       "status": "full_oos",
       "available": [],
@@ -6536,18 +6686,6 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/ice-blue-sculpt-core-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/white-sculpt-core-top": {
       "status": "full_oos",
       "available": [],
@@ -6560,43 +6698,7 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/storm-blue-sculpt-core-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/navy-sculpt-v-neck-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/black-sculpt-crew-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/storm-blue-sculpt-crew-top": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -6644,43 +6746,7 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/burgundy-sculpt-v-neck-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/brown-sculpt-scoop-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/storm-blue-sculpt-scoop-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/ice-blue-sculpt-booty-shorts": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -6859,30 +6925,6 @@
       ]
     },
     "https://cavaathleisure.com/products/black-cotton-twirl-skort": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/navy-cotton-twirl-skort": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/yellow-cotton-scoop-tank": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -7132,6 +7174,18 @@
         "38"
       ]
     },
+    "https://cavaathleisure.com/products/cobalt-racerback-tank": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/cobalt-sculptor-jacket": {
       "status": "full_oos",
       "available": [],
@@ -7169,18 +7223,6 @@
       ]
     },
     "https://cavaathleisure.com/products/pebble-extra-tall-hourglass-flared-leggings": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/cobalt-ex-tall-hourglass-flared-leggings": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -7540,18 +7582,6 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/lilac-sculpt-built-in-top": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/white-sculpt-built-in-top": {
       "status": "full_oos",
       "available": [],
@@ -7573,17 +7603,6 @@
         "S",
         "XL",
         "XS",
-        "XXL"
-      ]
-    },
-    "https://cavaathleisure.com/products/off-white-urban-zipper-polo": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
         "XXL"
       ]
     },
@@ -8071,18 +8090,6 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/green-zenfeel-shorts": {
-      "status": "full_oos",
-      "available": [],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/green-kickback-joggers": {
       "status": "full_oos",
       "available": [],
@@ -8129,6 +8136,17 @@
       ]
     },
     "https://cavaathleisure.com/products/black-elevate-24-7-sports-bra": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "XL",
+        "XS/S",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/cyan-elevate-24-7-seamless-leggings": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
