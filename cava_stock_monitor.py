@@ -10,6 +10,8 @@ import requests
 from openpyxl import Workbook
 from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
+from email.mime.base import MIMEBase
+from email import encoders
 
 # ====== CONFIG (from environment) ======
 
@@ -372,31 +374,56 @@ def has_changes(prev_state, curr_state):
 
 # ====== EMAIL SENDING ======
 
-def send_email(subject: str, html_body: str, text_body: str | None = None):
+def send_email(subject: str, html_body: str, text_body: str | None = None, attachment_path: str | None = None):
     if not SMTP_USER or not SMTP_PASSWORD:
         raise RuntimeError("SMTP_USER and SMTP_PASSWORD must be set in environment variables.")
 
-    msg = MIMEMultipart("alternative")
+    msg = MIMEMultipart("mixed")
+
     msg["From"] = SMTP_USER
+
     recipients = [e.strip() for e in TO_EMAIL.split(",") if e.strip()]
     msg["To"] = ", ".join(recipients)
 
     msg["Subject"] = subject
 
+    # Email body section
+    body = MIMEMultipart("alternative")
+
     if text_body is None:
-        text_body = "Your email client does not support HTML. Please view this email in an HTML-capable client."
+        text_body = "Please find the attached report."
 
-    part1 = MIMEText(text_body, "plain")
-    part2 = MIMEText(html_body, "html")
+    body.attach(MIMEText(text_body, "plain"))
+    body.attach(MIMEText(html_body, "html"))
 
-    msg.attach(part1)
-    msg.attach(part2)
+    msg.attach(body)
 
+    # Attach Excel file
+    if attachment_path and os.path.exists(attachment_path):
+
+        with open(attachment_path, "rb") as attachment:
+
+            part = MIMEBase(
+                "application",
+                "vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+
+            part.set_payload(attachment.read())
+
+        encoders.encode_base64(part)
+
+        part.add_header(
+            "Content-Disposition",
+            f'attachment; filename="{os.path.basename(attachment_path)}"'
+        )
+
+        msg.attach(part)
+
+    # Send email
     with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
         server.starttls()
         server.login(SMTP_USER, SMTP_PASSWORD)
         server.sendmail(SMTP_USER, recipients, msg.as_string())
-
 
 
 # ====== EXCEL EXPORT ======
@@ -566,8 +593,16 @@ def main():
     
     # Build today's full report (partial + full in stock + full OOS)
     report = build_report_via_products_json()
-    html_body = format_report_html(report)
-    text_body = format_report_text(report)
+    html_body = """
+    <html>
+    <body style="font-family:Arial, sans-serif;">
+        <h2>CAVA Stock Report</h2>
+        <p>Please find the attached Excel stock report.</p>
+    </body>
+    </html>
+    """
+
+    text_body = "Please find the attached Excel stock report."
 
     # Build simple state from report
     curr_state = extract_state_from_report(report)
@@ -585,7 +620,7 @@ def main():
         return
 
     subject = "CAVA Daily Stock Report (Full Inventory View)"
-    send_email(subject, html_body, text_body)
+    send_email(subject, html_body, text_body, excel_filename)
     print("Email sent.")
 
 
