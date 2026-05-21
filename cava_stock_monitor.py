@@ -476,7 +476,12 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         
         # Extract collection/category from tags or collection (if available)
         tags = p.get("tags", "")
-        new_sub_category = tags.split(",")[0].strip() if tags else "Uncategorized"
+        if isinstance(tags, list):
+            new_sub_category = tags[0].strip() if tags else "Uncategorized"
+        elif isinstance(tags, str):
+            new_sub_category = tags.split(",")[0].strip() if tags else "Uncategorized"
+        else:
+            new_sub_category = "Uncategorized"
         bucketing = p.get("vendor", "")  # or could use product type
 
         # Get variants and calculate inventory
