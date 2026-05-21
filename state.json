@@ -108,7 +108,6 @@
       "status": "partial",
       "available": [
         "L",
-        "M",
         "XL",
         "XS",
         "XXL"
@@ -271,19 +270,6 @@
       "unavailable": [
         "L",
         "M",
-        "XL",
-        "XS"
-      ]
-    },
-    "https://cavaathleisure.com/products/cherry-contour-flared-leggings": {
-      "status": "partial",
-      "available": [
-        "XXL"
-      ],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
         "XL",
         "XS"
       ]
@@ -6103,6 +6089,18 @@
       ]
     },
     "https://cavaathleisure.com/products/black-contour-flared-leggings": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/cherry-contour-flared-leggings": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
