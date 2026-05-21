@@ -536,15 +536,15 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         zero_sizes = total_sizes - len(available_sizes)
         
         # Determine status
-        if len(unavailable_sizes) > 0 and len(available_sizes) > 0:
+        if len(available_sizes) == 0:
+         # All sizes sold out
             status = "Broken"
             status_fill = broken_fill
-        elif len(available_sizes) == total_sizes:
+
+        else:
+    # At least one size available
             status = "Non Broken"
             status_fill = non_broken_fill
-        else:
-            status = "Broken"
-            status_fill = broken_fill
 
         broken_sizes_str = ", ".join(unavailable_sizes) if unavailable_sizes else "None"
         non_broken_sizes_str = ", ".join(available_sizes) if available_sizes else "None"
