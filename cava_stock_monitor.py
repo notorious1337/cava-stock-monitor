@@ -433,13 +433,13 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
     Generate an Excel spreadsheet with stock data in the desired format.
     Columns:
     - Product Name
-    - NewSubCategory (from product collection)
-    - Bucketing
-    - Total Sizes
+    - Product MRP
+    - Discount Price
+    - Discount Percentage
+    - Available Sizes List
     - Zero Sizes
     - Status (Broken/Non Broken)
     - Broken Sizes
-    
     - Non-Broken Sizes Inventory
     """
     try:
@@ -456,9 +456,9 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
     # Define headers
     headers = [
         "Product Name",
-        "NewSubCategory",
-        "Bucketing",
-        "Total Sizes",
+        "Product MRP",
+        "Discount Price",
+        "Discount Percentage",
         "Zero Sizes",
         "Status",
         "Broken Sizes",    
@@ -475,9 +475,9 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
 
     # Set column widths
     ws.column_dimensions['A'].width = 30
-    ws.column_dimensions['B'].width = 18
-    ws.column_dimensions['C'].width = 15
-    ws.column_dimensions['D'].width = 12
+    ws.column_dimensions['B'].width = 14
+    ws.column_dimensions['C'].width = 14
+    ws.column_dimensions['D'].width = 16
     ws.column_dimensions['E'].width = 12
     ws.column_dimensions['F'].width = 14
     ws.column_dimensions['G'].width = 20
@@ -501,24 +501,34 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         title = p.get("title", "Unknown product")
         handle = p.get("handle", "")
         
-        # Extract collection/category from tags or collection (if available)
-        tags = p.get("tags", "")
-        if isinstance(tags, list):
-            new_sub_category = tags[0].strip() if tags else "Uncategorized"
-        elif isinstance(tags, str):
-            new_sub_category = tags.split(",")[0].strip() if tags else "Uncategorized"
-        else:
-            new_sub_category = "Uncategorized"
-        bucketing = p.get("vendor", "")  # or could use product type
-
-        # Get variants and calculate inventory
+        # Get variants and calculate inventory/pricing
         variants = p.get("variants", [])
-        total_sizes = len(variants)
         
         available_sizes = []
         unavailable_sizes = []
         total_inventory = 0
         available_inventory = 0
+        mrp = None
+        discount_price = None
+        discount_percentage = None
+
+        # Extract pricing and inventory from first variant
+        if variants and len(variants) > 0:
+            first_variant = variants[0]
+            # MRP is typically stored as compare_at_price
+            mrp = first_variant.get("compare_at_price") or first_variant.get("price", "N/A")
+            # Discount price is the regular price
+            discount_price = first_variant.get("price", "N/A")
+            
+            # Calculate discount percentage
+            if mrp and discount_price:
+                try:
+                    mrp_float = float(mrp)
+                    price_float = float(discount_price)
+                    if mrp_float > 0:
+                        discount_percentage = round(((mrp_float - price_float) / mrp_float) * 100, 2)
+                except (ValueError, TypeError):
+                    discount_percentage = "N/A"
 
         for v in variants:
             size = v.get("option1") or v.get("title", "")
@@ -529,38 +539,33 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
             
             if available:
                 available_sizes.append(size)
-
-    # Use inventory if present, otherwise default to 1
                 available_inventory += max(inventory, 1)
-
             else:
                 unavailable_sizes.append(size)
 
-        zero_sizes = total_sizes - len(available_sizes)
+        zero_sizes = len(unavailable_sizes)
         
         # Determine status
         if len(available_sizes) == 0:
-         # All sizes sold out
+            # All sizes sold out
             status = "Broken"
             status_fill = broken_fill
-
         else:
-    # At least one size available
+            # At least one size available
             status = "Non Broken"
             status_fill = non_broken_fill
 
-        broken_sizes_str = ", ".join(unavailable_sizes) if unavailable_sizes else "None"
-        non_broken_sizes_str = ", ".join(available_sizes) if available_sizes else "None"
+        broken_sizes_str = ", ".join(sorted(set(unavailable_sizes))) if unavailable_sizes else "None"
+        non_broken_sizes_str = ", ".join(sorted(set(available_sizes))) if available_sizes else "None"
 
         # Write row data
         ws.cell(row=row_num, column=1).value = title
-        ws.cell(row=row_num, column=2).value = new_sub_category
-        ws.cell(row=row_num, column=3).value = bucketing
-        ws.cell(row=row_num, column=4).value = total_sizes
+        ws.cell(row=row_num, column=2).value = mrp
+        ws.cell(row=row_num, column=3).value = discount_price
+        ws.cell(row=row_num, column=4).value = discount_percentage
         ws.cell(row=row_num, column=5).value = zero_sizes
         ws.cell(row=row_num, column=6).value = status
         ws.cell(row=row_num, column=7).value = broken_sizes_str
-        
         ws.cell(row=row_num, column=8).value = non_broken_sizes_str
 
         # Apply formatting to all cells in row
