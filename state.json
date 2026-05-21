@@ -366,19 +366,6 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/plum-seamless-cinched-leggings": {
-      "status": "partial",
-      "available": [
-        "L"
-      ],
-      "unavailable": [
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/cherry-sculptor-jacket": {
       "status": "partial",
       "available": [
@@ -1496,13 +1483,13 @@
     "https://cavaathleisure.com/products/pink-ultra-support-sports-bra": {
       "status": "partial",
       "available": [
-        "M",
         "S",
         "XL",
         "XXL"
       ],
       "unavailable": [
         "L",
+        "M",
         "XS"
       ]
     },
@@ -2211,19 +2198,6 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/burgundy-hourglass-snug-leggings": {
-      "status": "partial",
-      "available": [
-        "S"
-      ],
-      "unavailable": [
-        "L",
-        "M",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/green-pulse-seamless-tee": {
       "status": "partial",
       "available": [
@@ -2702,6 +2676,19 @@
       "unavailable": [
         "L",
         "XS"
+      ]
+    },
+    "https://cavaathleisure.com/products/moscow-blue-cross-back-sports-bra": {
+      "status": "partial",
+      "available": [
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXL"
+      ],
+      "unavailable": [
+        "XL"
       ]
     },
     "https://cavaathleisure.com/products/navy-techpique-cropped-polo": {
@@ -4170,7 +4157,6 @@
     "https://cavaathleisure.com/products/raven-black-seamless-cinched-activewear-set": {
       "status": "partial",
       "available": [
-        "L",
         "M",
         "S"
       ],
@@ -5620,18 +5606,6 @@
       ],
       "unavailable": []
     },
-    "https://cavaathleisure.com/products/moscow-blue-cross-back-sports-bra": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
     "https://cavaathleisure.com/products/white-techpique-cropped-polo": {
       "status": "full_in_stock",
       "available": [
@@ -6308,6 +6282,18 @@
       ]
     },
     "https://cavaathleisure.com/products/wine-heartline-sports-bra": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/plum-seamless-cinched-leggings": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
@@ -7228,6 +7214,18 @@
       ]
     },
     "https://cavaathleisure.com/products/cobalt-overlap-tee": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/burgundy-hourglass-snug-leggings": {
       "status": "full_oos",
       "available": [],
       "unavailable": [
