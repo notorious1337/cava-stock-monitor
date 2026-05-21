@@ -459,10 +459,8 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         "Product MRP",
         "Discount Price",
         "Discount Percentage",
-        "Zero Sizes",
-        "Status",
-        "Broken Sizes",    
-        "Non-Broken Sizes Inventory"
+        "Unavailable Sizes",    
+        "Available Sizes"
     ]
 
     # Write headers
@@ -478,10 +476,8 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
     ws.column_dimensions['B'].width = 14
     ws.column_dimensions['C'].width = 14
     ws.column_dimensions['D'].width = 16
-    ws.column_dimensions['E'].width = 12
-    ws.column_dimensions['F'].width = 14
-    ws.column_dimensions['G'].width = 20
-    ws.column_dimensions['H'].width = 25
+    ws.column_dimensions['E'].width = 20
+    ws.column_dimensions['F'].width = 25
     
   
 
@@ -563,22 +559,14 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         ws.cell(row=row_num, column=2).value = mrp
         ws.cell(row=row_num, column=3).value = discount_price
         ws.cell(row=row_num, column=4).value = discount_percentage
-        ws.cell(row=row_num, column=5).value = zero_sizes
-        ws.cell(row=row_num, column=6).value = status
-        ws.cell(row=row_num, column=7).value = broken_sizes_str
-        ws.cell(row=row_num, column=8).value = non_broken_sizes_str
+        ws.cell(row=row_num, column=5).value = broken_sizes_str
+        ws.cell(row=row_num, column=6).value = non_broken_sizes_str
 
         # Apply formatting to all cells in row
         for col_num in range(1, len(headers) + 1):
             cell = ws.cell(row=row_num, column=col_num)
             cell.border = border
             cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
-            
-            # Apply status color only to Status column
-            if col_num == 6:
-                cell.fill = status_fill
-                cell.font = Font(bold=True, color="000000")
-                cell.alignment = Alignment(horizontal="center", vertical="center")
 
         row_num += 1
 
