@@ -527,9 +527,12 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
             
             total_inventory += inventory
             
-            if available and inventory > 0:
+            if available:
                 available_sizes.append(size)
-                available_inventory += inventory
+
+    # Use inventory if present, otherwise default to 1
+                available_inventory += max(inventory, 1)
+
             else:
                 unavailable_sizes.append(size)
 
