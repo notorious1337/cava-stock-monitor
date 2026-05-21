@@ -40,6 +40,14 @@ jobs:
       - name: Run CAVA stock monitor
         run: python cava_stock_monitor.py
 
+      - name: Upload Excel Report as Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cava-stock-report
+          path: CAVA_Stock_Report_*.xlsx
+          retention-days: 30
+
       - name: Commit updated state.json
         run: |
           git config user.name "github-actions[bot]"

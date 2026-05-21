@@ -4,8 +4,12 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from urllib.parse import urljoin
+from datetime import datetime
 
 import requests
+from openpyxl import Workbook
+from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
+from openpyxl.utils import get_column_letter
 
 # ====== CONFIG (from environment) ======
 
@@ -395,9 +399,166 @@ def send_email(subject: str, html_body: str, text_body: str | None = None):
 
 
 
-# ====== MAIN ======
+# ====== EXCEL EXPORT ======
+
+def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
+    """
+    Generate an Excel spreadsheet with stock data in the desired format.
+    Columns:
+    - Product Name
+    - NewSubCategory (from product collection)
+    - Bucketing
+    - Total Sizes
+    - Zero Sizes
+    - Status (Broken/Non Broken)
+    - Broken Sizes
+    - Total Inventory
+    - Non-Broken Sizes Inventory
+    """
+    try:
+        from openpyxl.utils import get_column_letter
+    except ImportError:
+        print("openpyxl not installed. Skipping Excel generation.")
+        return
+
+    products = fetch_all_products()
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Stock Report"
+
+    # Define headers
+    headers = [
+        "Product Name",
+        "NewSubCategory",
+        "Bucketing",
+        "Total Sizes",
+        "Zero Sizes",
+        "Status",
+        "Broken Sizes",
+        "Total Inventory",
+        "Non-Broken Sizes Inventory"
+    ]
+
+    # Write headers
+    for col_num, header in enumerate(headers, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = header
+        cell.font = Font(bold=True, color="FFFFFF")
+        cell.fill = PatternFill(start_color="366092", end_color="366092", fill_type="solid")
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+
+    # Set column widths
+    ws.column_dimensions['A'].width = 30
+    ws.column_dimensions['B'].width = 18
+    ws.column_dimensions['C'].width = 15
+    ws.column_dimensions['D'].width = 12
+    ws.column_dimensions['E'].width = 12
+    ws.column_dimensions['F'].width = 14
+    ws.column_dimensions['G'].width = 20
+    ws.column_dimensions['H'].width = 15
+    ws.column_dimensions['I'].width = 25
+
+    # Define colors
+    broken_fill = PatternFill(start_color="FF6961", end_color="FF6961", fill_type="solid")  # Red
+    non_broken_fill = PatternFill(start_color="77DD77", end_color="77DD77", fill_type="solid")  # Green
+    border = Border(
+        left=Side(style='thin'),
+        right=Side(style='thin'),
+        top=Side(style='thin'),
+        bottom=Side(style='thin')
+    )
+
+    # Process each product
+    row_num = 2
+    for p in products:
+        title = p.get("title", "Unknown product")
+        handle = p.get("handle", "")
+        
+        # Extract collection/category from tags or collection (if available)
+        tags = p.get("tags", "")
+        new_sub_category = tags.split(",")[0].strip() if tags else "Uncategorized"
+        bucketing = p.get("vendor", "")  # or could use product type
+
+        # Get variants and calculate inventory
+        variants = p.get("variants", [])
+        total_sizes = len(variants)
+        
+        available_sizes = []
+        unavailable_sizes = []
+        total_inventory = 0
+        available_inventory = 0
+
+        for v in variants:
+            size = v.get("option1") or v.get("title", "")
+            available = v.get("available", True)
+            inventory = v.get("inventory_quantity", 0)
+            
+            total_inventory += inventory
+            
+            if available and inventory > 0:
+                available_sizes.append(size)
+                available_inventory += inventory
+            else:
+                unavailable_sizes.append(size)
+
+        zero_sizes = total_sizes - len(available_sizes)
+        
+        # Determine status
+        if len(unavailable_sizes) > 0 and len(available_sizes) > 0:
+            status = "Broken"
+            status_fill = broken_fill
+        elif len(available_sizes) == total_sizes:
+            status = "Non Broken"
+            status_fill = non_broken_fill
+        else:
+            status = "Broken"
+            status_fill = broken_fill
+
+        broken_sizes_str = ", ".join(unavailable_sizes) if unavailable_sizes else "None"
+        non_broken_sizes_str = ", ".join(available_sizes) if available_sizes else "None"
+
+        # Write row data
+        ws.cell(row=row_num, column=1).value = title
+        ws.cell(row=row_num, column=2).value = new_sub_category
+        ws.cell(row=row_num, column=3).value = bucketing
+        ws.cell(row=row_num, column=4).value = total_sizes
+        ws.cell(row=row_num, column=5).value = zero_sizes
+        ws.cell(row=row_num, column=6).value = status
+        ws.cell(row=row_num, column=7).value = broken_sizes_str
+        ws.cell(row=row_num, column=8).value = total_inventory
+        ws.cell(row=row_num, column=9).value = non_broken_sizes_str
+
+        # Apply formatting to all cells in row
+        for col_num in range(1, len(headers) + 1):
+            cell = ws.cell(row=row_num, column=col_num)
+            cell.border = border
+            cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
+            
+            # Apply status color only to Status column
+            if col_num == 6:
+                cell.fill = status_fill
+                cell.font = Font(bold=True, color="000000")
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+
+        row_num += 1
+
+    # Freeze header row
+    ws.freeze_panes = "A2"
+    
+    # Save the workbook
+    wb.save(output_filename)
+    print(f"Excel report saved: {output_filename}")
+    return output_filename
+
+
+# ====== EMAIL SENDING ======
 
 def main():
+    # Generate Excel report (always)
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    excel_filename = f"CAVA_Stock_Report_{timestamp}.xlsx"
+    generate_excel_report(excel_filename)
+    
     # Build today's full report (partial + full in stock + full OOS)
     report = build_report_via_products_json()
     html_body = format_report_html(report)
