@@ -776,19 +776,6 @@
         "XS"
       ]
     },
-    "https://cavaathleisure.com/products/navy-sculpt-bootcut-leggings": {
-      "status": "partial",
-      "available": [
-        "XS"
-      ],
-      "unavailable": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/burgundy-sculpt-bootcut-leggings": {
       "status": "partial",
       "available": [
@@ -1560,7 +1547,6 @@
     "https://cavaathleisure.com/products/cobalt-hourglass-flared-leggings": {
       "status": "partial",
       "available": [
-        "L",
         "M",
         "S",
         "XL",
@@ -1595,6 +1581,7 @@
     "https://cavaathleisure.com/products/wine-hourglass-flared-leggings": {
       "status": "partial",
       "available": [
+        "M",
         "S",
         "XS",
         "XXL"
@@ -1612,8 +1599,7 @@
       "status": "partial",
       "available": [
         "M",
-        "S",
-        "XXL"
+        "S"
       ],
       "unavailable": [
         "L",
@@ -2309,12 +2295,12 @@
     "https://cavaathleisure.com/products/wine-tall-hourglass-flared-leggings": {
       "status": "partial",
       "available": [
+        "M",
         "S",
         "XXL"
       ],
       "unavailable": [
         "L",
-        "M",
         "XL",
         "XS"
       ]
@@ -2421,6 +2407,19 @@
         "M",
         "S",
         "XS"
+      ]
+    },
+    "https://cavaathleisure.com/products/cobalt-petite-hourglass-flared-leggings": {
+      "status": "partial",
+      "available": [
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ],
+      "unavailable": [
+        "L"
       ]
     },
     "https://cavaathleisure.com/products/cedar-mirage-leggings": {
@@ -2637,19 +2636,6 @@
         "XXL"
       ]
     },
-    "https://cavaathleisure.com/products/lilac-all-square-sports-bra": {
-      "status": "partial",
-      "available": [
-        "S"
-      ],
-      "unavailable": [
-        "L",
-        "M",
-        "XL",
-        "XS",
-        "XXL"
-      ]
-    },
     "https://cavaathleisure.com/products/black-pliee-pleated-skort": {
       "status": "partial",
       "available": [
@@ -2712,18 +2698,6 @@
       ],
       "unavailable": [
         "XL"
-      ]
-    },
-    "https://cavaathleisure.com/products/off-white-urban-zipper-polo": {
-      "status": "partial",
-      "available": [
-        "M"
-      ],
-      "unavailable": [
-        "L",
-        "S",
-        "XL",
-        "XXL"
       ]
     },
     "https://cavaathleisure.com/products/navy-everywear-pants": {
@@ -2880,13 +2854,13 @@
       "status": "partial",
       "available": [
         "M",
-        "S",
-        "XXL"
+        "S"
       ],
       "unavailable": [
         "L",
         "XL",
-        "XS"
+        "XS",
+        "XXL"
       ]
     },
     "https://cavaathleisure.com/products/navy-sculpt-leggings": {
@@ -5341,18 +5315,6 @@
       ],
       "unavailable": []
     },
-    "https://cavaathleisure.com/products/cobalt-petite-hourglass-flared-leggings": {
-      "status": "full_in_stock",
-      "available": [
-        "L",
-        "M",
-        "S",
-        "XL",
-        "XS",
-        "XXL"
-      ],
-      "unavailable": []
-    },
     "https://cavaathleisure.com/products/ruby-aerial-leggings": {
       "status": "full_in_stock",
       "available": [
@@ -6645,6 +6607,18 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/navy-sculpt-bootcut-leggings": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/storm-blue-sculpt-scoop-top": {
       "status": "full_oos",
       "available": [],
@@ -7570,6 +7544,18 @@
         "XXL"
       ]
     },
+    "https://cavaathleisure.com/products/lilac-all-square-sports-bra": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
+        "XS",
+        "XXL"
+      ]
+    },
     "https://cavaathleisure.com/products/lilac-sculpt-built-in-top": {
       "status": "full_oos",
       "available": [],
@@ -7627,6 +7613,17 @@
         "S",
         "XL",
         "XS",
+        "XXL"
+      ]
+    },
+    "https://cavaathleisure.com/products/off-white-urban-zipper-polo": {
+      "status": "full_oos",
+      "available": [],
+      "unavailable": [
+        "L",
+        "M",
+        "S",
+        "XL",
         "XXL"
       ]
     },
