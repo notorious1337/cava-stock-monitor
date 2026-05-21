@@ -439,7 +439,7 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
     - Zero Sizes
     - Status (Broken/Non Broken)
     - Broken Sizes
-    - Total Inventory
+    
     - Non-Broken Sizes Inventory
     """
     try:
@@ -461,8 +461,7 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         "Total Sizes",
         "Zero Sizes",
         "Status",
-        "Broken Sizes",
-        "Total Inventory",
+        "Broken Sizes",    
         "Non-Broken Sizes Inventory"
     ]
 
@@ -482,8 +481,9 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
     ws.column_dimensions['E'].width = 12
     ws.column_dimensions['F'].width = 14
     ws.column_dimensions['G'].width = 20
-    ws.column_dimensions['H'].width = 15
-    ws.column_dimensions['I'].width = 25
+    ws.column_dimensions['H'].width = 25
+    
+  
 
     # Define colors
     broken_fill = PatternFill(start_color="FF6961", end_color="FF6961", fill_type="solid")  # Red
@@ -560,8 +560,8 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         ws.cell(row=row_num, column=5).value = zero_sizes
         ws.cell(row=row_num, column=6).value = status
         ws.cell(row=row_num, column=7).value = broken_sizes_str
-        ws.cell(row=row_num, column=8).value = total_inventory
-        ws.cell(row=row_num, column=9).value = non_broken_sizes_str
+        
+        ws.cell(row=row_num, column=8).value = non_broken_sizes_str
 
         # Apply formatting to all cells in row
         for col_num in range(1, len(headers) + 1):
