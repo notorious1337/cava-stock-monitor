@@ -85,9 +85,9 @@ def fetch_products_page(page: int, limit: int = 250):
     
                 return products
 
-        except Exception as decomp_error:
-            print(f"Brotli decompression failed: {decomp_error}")
-            return []
+            except Exception as decomp_error:
+                print(f"Brotli decompression failed: {decomp_error}")
+                return []
             
             
     except Exception as e:
