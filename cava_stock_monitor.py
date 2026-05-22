@@ -1,6 +1,7 @@
 import os
 import json
 import smtplib
+import brotli
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from urllib.parse import urljoin
@@ -38,18 +39,61 @@ def fetch_products_page(page: int, limit: int = 250):
     """
     url = f"{BASE_URL}/products.json?limit={limit}&page={page}"
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; CavaStockBot/1.0)",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
         "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Dest": "empty",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
     }
     try:
+        print(f"Fetching from: {url}")
         resp = requests.get(url, headers=headers, timeout=30)
+        print(f"Response status: {resp.status_code}")
+        print(f"Response content length: {len(resp.content)} bytes")
+        print(f"Response content-type: {resp.headers.get('content-type', 'unknown')}")
+        print(f"Response content-encoding: {resp.headers.get('content-encoding', 'none')}")
+        
         if resp.status_code != 200:
-            print(f"Got status {resp.status_code} for {url}, stopping pagination.")
+            print(f"Got status {resp.status_code} for {url}")
             return []
-        data = resp.json()
-        return data.get("products", [])
+        
+        # Try to parse the content as JSON (requests may have already decompressed)
+        try:
+            data = resp.json()
+            products = data.get("products", [])
+            print(f"[OK] Successfully parsed JSON - contains {len(products)} products")
+            print(f"Response top-level keys: {list(data.keys())}")
+            return products
+        except json.JSONDecodeError as json_error:
+            print(f"JSON parse failed: {json_error}")
+            # Try manual decompression
+            content = resp.content
+            if content[:2] == b'\xce\xb2':  # Brotli magic bytes
+                print("Detected Brotli magic bytes, decompressing manually...")
+                try:
+                    content = brotli.decompress(content)
+                    print(f"Decompressed to {len(content)} bytes")
+                    text = content.decode('utf-8', errors='replace')
+                    data = json.loads(text)
+                    products = data.get("products", [])
+                    print(f"[OK] Successfully parsed JSON after decompression - contains {len(products)} products")
+                    return products
+                except Exception as decomp_error:
+                    print(f"Decompression failed: {decomp_error}")
+                    return []
+            else:
+                print(f"Not Brotli compressed. First bytes: {content[:10]}")
+                return []
+            
     except Exception as e:
-        print(f"Error fetching products page {page}: {e}")
+        print(f"Error fetching products page {page}: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
         return []
 
 
@@ -59,16 +103,26 @@ def fetch_all_products():
     """
     all_products = []
     page = 1
+    
+    print(f"[FETCH] Starting product fetch from {BASE_URL}")
+    
+    # Check if base URL is reachable
+    try:
+        test_resp = requests.head(BASE_URL, timeout=10)
+        print(f"[FETCH] Base URL reachable: {test_resp.status_code}")
+    except Exception as e:
+        print(f"[FETCH] WARNING: Cannot reach base URL {BASE_URL}: {e}")
 
     while True:
         products = fetch_products_page(page)
         if not products:
+            print(f"[FETCH] No products found on page {page}, stopping pagination")
             break
         all_products.extend(products)
-        print(f"Fetched {len(products)} products from page {page}")
+        print(f"[FETCH] Fetched {len(products)} products from page {page}")
         page += 1
 
-    print(f"Total products fetched: {len(all_products)}")
+    print(f"[FETCH] Total products fetched: {len(all_products)}")
     return all_products
 
 
@@ -453,10 +507,10 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         return
 
     products = fetch_all_products()
-    print(f"Starting Excel generation with {len(products)} products fetched")
+    print(f"[EXCEL] Starting Excel generation with {len(products)} products fetched")
     
     if not products:
-        print("WARNING: No products fetched. Excel file will be empty.")
+        print("[EXCEL] WARNING: No products fetched. Excel file will be empty but will still be created.")
     
     wb = Workbook()
     ws = wb.active
@@ -487,6 +541,8 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
     ws.column_dimensions['D'].width = 16
     ws.column_dimensions['E'].width = 20
     ws.column_dimensions['F'].width = 25
+    
+    print("[EXCEL] Headers and column widths set")
     
   
 
