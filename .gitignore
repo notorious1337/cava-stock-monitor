@@ -1,0 +1,3 @@
+*.xlsx
+state.json
+__pycache__/
