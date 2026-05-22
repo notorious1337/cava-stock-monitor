@@ -41,12 +41,16 @@ def fetch_products_page(page: int, limit: int = 250):
         "User-Agent": "Mozilla/5.0 (compatible; CavaStockBot/1.0)",
         "Accept": "application/json",
     }
-    resp = requests.get(url, headers=headers, timeout=30)
-    if resp.status_code != 200:
-        print(f"Got status {resp.status_code} for {url}, stopping pagination.")
+    try:
+        resp = requests.get(url, headers=headers, timeout=30)
+        if resp.status_code != 200:
+            print(f"Got status {resp.status_code} for {url}, stopping pagination.")
+            return []
+        data = resp.json()
+        return data.get("products", [])
+    except Exception as e:
+        print(f"Error fetching products page {page}: {e}")
         return []
-    data = resp.json()
-    return data.get("products", [])
 
 
 def fetch_all_products():
@@ -449,6 +453,11 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         return
 
     products = fetch_all_products()
+    print(f"Starting Excel generation with {len(products)} products fetched")
+    
+    if not products:
+        print("WARNING: No products fetched. Excel file will be empty.")
+    
     wb = Workbook()
     ws = wb.active
     ws.title = "Stock Report"
@@ -460,7 +469,7 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
         "Discount Price",
         "Discount Percentage",
         "Unavailable Sizes",    
-        "Available Sizes"
+        "Available Sizes",
     ]
 
     # Write headers
@@ -493,82 +502,91 @@ def generate_excel_report(output_filename: str = "CAVA_Stock_Report.xlsx"):
 
     # Process each product
     row_num = 2
+    processed_count = 0
     for p in products:
-        title = p.get("title", "Unknown product")
-        handle = p.get("handle", "")
-        
-        # Get variants and calculate inventory/pricing
-        variants = p.get("variants", [])
-        
-        available_sizes = []
-        unavailable_sizes = []
-        total_inventory = 0
-        available_inventory = 0
-        mrp = None
-        discount_price = None
-        discount_percentage = None
+        try:
+            title = p.get("title", "Unknown product")
+            handle = p.get("handle", "")
+            
+            # Get variants and calculate inventory/pricing
+            variants = p.get("variants", [])
+            
+            available_sizes = []
+            unavailable_sizes = []
+            total_inventory = 0
+            available_inventory = 0
+            mrp = None
+            discount_price = None
+            discount_percentage = None
 
-        # Extract pricing and inventory from first variant
-        if variants and len(variants) > 0:
-            first_variant = variants[0]
-            # MRP is typically stored as compare_at_price
-            mrp = first_variant.get("compare_at_price") or first_variant.get("price", "N/A")
-            # Discount price is the regular price
-            discount_price = first_variant.get("price", "N/A")
-            
-            # Calculate discount percentage
-            if mrp and discount_price:
-                try:
-                    mrp_float = float(mrp)
-                    price_float = float(discount_price)
-                    if mrp_float > 0:
-                        discount_percentage = round(((mrp_float - price_float) / mrp_float) * 100, 2)
-                except (ValueError, TypeError):
-                    discount_percentage = "N/A"
+            # Extract pricing and inventory from first variant
+            if variants and len(variants) > 0:
+                first_variant = variants[0]
+                # MRP is typically stored as compare_at_price
+                mrp = first_variant.get("compare_at_price") or first_variant.get("price", "N/A")
+                # Discount price is the regular price
+                discount_price = first_variant.get("price", "N/A")
+                
+                # Calculate discount percentage
+                if mrp and discount_price:
+                    try:
+                        mrp_float = float(mrp)
+                        price_float = float(discount_price)
+                        if mrp_float > 0:
+                            discount_percentage = round(((mrp_float - price_float) / mrp_float) * 100, 2)
+                    except (ValueError, TypeError):
+                        discount_percentage = "N/A"
 
-        for v in variants:
-            size = v.get("option1") or v.get("title", "")
-            available = v.get("available", True)
-            inventory = v.get("inventory_quantity", 0)
+            for v in variants:
+                size = v.get("option1") or v.get("title", "")
+                available = v.get("available", True)
+                inventory = v.get("inventory_quantity", 0)
+                
+                total_inventory += inventory
+                
+                if available:
+                    available_sizes.append(size)
+                    available_inventory += max(inventory, 1)
+                else:
+                    unavailable_sizes.append(size)
+
+            zero_sizes = len(unavailable_sizes)
             
-            total_inventory += inventory
-            
-            if available:
-                available_sizes.append(size)
-                available_inventory += max(inventory, 1)
+            # Determine status
+            if len(available_sizes) == 0:
+                # All sizes sold out
+                status = "Broken"
+                status_fill = broken_fill
             else:
-                unavailable_sizes.append(size)
+                # At least one size available
+                status = "Non Broken"
+                status_fill = non_broken_fill
 
-        zero_sizes = len(unavailable_sizes)
-        
-        # Determine status
-        if len(available_sizes) == 0:
-            # All sizes sold out
-            status = "Broken"
-            status_fill = broken_fill
-        else:
-            # At least one size available
-            status = "Non Broken"
-            status_fill = non_broken_fill
+            broken_sizes_str = ", ".join(sorted(set(unavailable_sizes))) if unavailable_sizes else "None"
+            non_broken_sizes_str = ", ".join(sorted(set(available_sizes))) if available_sizes else "None"
 
-        broken_sizes_str = ", ".join(sorted(set(unavailable_sizes))) if unavailable_sizes else "None"
-        non_broken_sizes_str = ", ".join(sorted(set(available_sizes))) if available_sizes else "None"
+            # Write row data
+            ws.cell(row=row_num, column=1).value = title
+            ws.cell(row=row_num, column=2).value = mrp
+            ws.cell(row=row_num, column=3).value = discount_price
+            ws.cell(row=row_num, column=4).value = discount_percentage
+            ws.cell(row=row_num, column=5).value = broken_sizes_str
+            ws.cell(row=row_num, column=6).value = non_broken_sizes_str
 
-        # Write row data
-        ws.cell(row=row_num, column=1).value = title
-        ws.cell(row=row_num, column=2).value = mrp
-        ws.cell(row=row_num, column=3).value = discount_price
-        ws.cell(row=row_num, column=4).value = discount_percentage
-        ws.cell(row=row_num, column=5).value = broken_sizes_str
-        ws.cell(row=row_num, column=6).value = non_broken_sizes_str
+            # Apply formatting to all cells in row
+            for col_num in range(1, len(headers) + 1):
+                cell = ws.cell(row=row_num, column=col_num)
+                cell.border = border
+                cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
 
-        # Apply formatting to all cells in row
-        for col_num in range(1, len(headers) + 1):
-            cell = ws.cell(row=row_num, column=col_num)
-            cell.border = border
-            cell.alignment = Alignment(horizontal="left", vertical="center", wrap_text=True)
+            row_num += 1
+            processed_count += 1
+            
+        except Exception as e:
+            print(f"Error processing product {title}: {e}")
+            continue
 
-        row_num += 1
+    print(f"Processed {processed_count} products for Excel report")
 
     # Freeze header row
     ws.freeze_panes = "A2"
@@ -585,9 +603,12 @@ def main():
     # Generate Excel report (always)
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     excel_filename = f"CAVA_Stock_Report_{timestamp}.xlsx"
-    generate_excel_report(excel_filename)
+    print(f"Generating Excel report: {excel_filename}")
+    excel_path = generate_excel_report(excel_filename)
+    print(f"Excel report generated at: {excel_path}")
     
     # Build today's full report (partial + full in stock + full OOS)
+    print("Building stock report...")
     report = build_report_via_products_json()
     html_body = """
     <html>
@@ -616,8 +637,12 @@ def main():
         return
 
     subject = "CAVA Daily Stock Report (Full Inventory View)"
-    send_email(subject, html_body, text_body, excel_filename)
-    print("Email sent.")
+    print(f"Sending email with subject: {subject}")
+    try:
+        send_email(subject, html_body, text_body, excel_path)
+        print("Email sent successfully.")
+    except Exception as e:
+        print(f"Error sending email: {e}")
 
 
 if __name__ == "__main__":
