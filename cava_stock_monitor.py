@@ -1,7 +1,7 @@
 import os
 import json
 import smtplib
-import brotli
+
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from urllib.parse import urljoin
@@ -73,22 +73,7 @@ def fetch_products_page(page: int, limit: int = 250):
             print(f"JSON parse failed: {json_error}")
             # Try manual decompression
             content = resp.content
-            if content[:2] == b'\xce\xb2':  # Brotli magic bytes
-                print("Detected Brotli magic bytes, decompressing manually...")
-                try:
-                    content = brotli.decompress(content)
-                    print(f"Decompressed to {len(content)} bytes")
-                    text = content.decode('utf-8', errors='replace')
-                    data = json.loads(text)
-                    products = data.get("products", [])
-                    print(f"[OK] Successfully parsed JSON after decompression - contains {len(products)} products")
-                    return products
-                except Exception as decomp_error:
-                    print(f"Decompression failed: {decomp_error}")
-                    return []
-            else:
-                print(f"Not Brotli compressed. First bytes: {content[:10]}")
-                return []
+            
             
     except Exception as e:
         print(f"Error fetching products page {page}: {type(e).__name__}: {e}")
